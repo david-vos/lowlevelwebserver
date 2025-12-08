@@ -4,14 +4,21 @@ class WebServer {
     private let port: UInt16
     private var tcpSocket: TCPSocket?
     private var isRunning = false
+    private let router: Router
 
     private let receiveTimeoutSeconds: Int
     private let maximumRequestSizeBytes: Int
 
-    init(port: UInt16 = 8080, receiveTimeoutSeconds: Int = 30, maximumRequestSizeBytes: Int = 1_000_000) {
+    init(
+        port: UInt16 = 8080,
+        receiveTimeoutSeconds: Int = 30,
+        maximumRequestSizeBytes: Int = 1_000_000,
+        router: Router = Router()
+    ) {
         self.port = port
         self.receiveTimeoutSeconds = receiveTimeoutSeconds
         self.maximumRequestSizeBytes = maximumRequestSizeBytes
+        self.router = router
     }
 
     func start() {
@@ -57,20 +64,24 @@ class WebServer {
                 if let httpRequest = HTTPParser.parse(receivedData) {
                     print("Method: \(httpRequest.method.rawValue)")
                     print("URL: \(httpRequest.url)")
-                    print("Version: \(httpRequest.version)")
 
-                    let htmlResponse = HTTPResponse.htmlResponse(htmlBody: HTTPResponse.defaultHTML)
+                    let htmlResponse = router.navigate(
+                        path: httpRequest.url, request: httpRequest
+                    )
 
-                    if connection.write(htmlResponse) {
-                        print("Sent HTML response (\(htmlResponse.count) bytes)")
+                    if !connection.write(htmlResponse) {
+                        let errorResponse = ErrorPage.staticErrorResponse
+                        _ = connection.write(errorResponse)
                     } else {
-                        print("Failed to send response")
+                        print("Sent HTML response (\(htmlResponse.count) bytes)")
                     }
                 } else {
-                    print("Failed to parse HTTP request")
+                    let errorResponse = ErrorPage.staticErrorResponse
+                    _ = connection.write(errorResponse)
                 }
             } else {
-                print("No data received or connection error")
+                let errorResponse = ErrorPage.staticErrorResponse
+                _ = connection.write(errorResponse)
             }
 
             connection.close()

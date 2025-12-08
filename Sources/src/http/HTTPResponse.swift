@@ -21,8 +21,31 @@ class HTTPResponse {
         return Data(response.utf8)
     }
 
+    static func cssResponse(statusCode: Int = 200, statusText: String = "OK", cssBody: String) -> Data {
+        var response = "HTTP/1.1 \(statusCode) \(statusText)\r\n"
+        response += "Content-Type: text/css; charset=utf-8\r\n"
+        response += "Content-Length: \(cssBody.utf8.count)\r\n"
+        response += "Connection: close\r\n"
+        response += "\r\n"
+        response += cssBody
+
+        return Data(response.utf8)
+    }
+
+    static func binaryResponse(statusCode: Int = 200, statusText: String = "OK", contentType: String, body: Data) -> Data {
+        var response = "HTTP/1.1 \(statusCode) \(statusText)\r\n"
+        response += "Content-Type: \(contentType)\r\n"
+        response += "Content-Length: \(body.count)\r\n"
+        response += "Connection: close\r\n"
+        response += "\r\n"
+
+        var responseData = Data(response.utf8)
+        responseData.append(body)
+        return responseData
+    }
+
     /// Default HTML page to return
-    static let defaultHTML = """
+    static let pageNotFoundHTML = """
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -55,9 +78,9 @@ class HTTPResponse {
     </head>
     <body>
         <div class="container">
-            <h1>I forgot to create content for the requested page</h1>
-            <p>Please reach out to dev@dvos.me to report the bug</p>
-            <p>Nothing is wrong with the server. I just messup up...</p>
+            <h1>404 - Page not found</h1>
+            <p>The page you requestedd does not exist</p>
+            <p>Please check the URL and try again</p>
         </div>
     </body>
     </html>

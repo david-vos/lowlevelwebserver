@@ -6,7 +6,10 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "lowlevelwebserver",
-            path: "Sources"
+            path: "Sources",
+            resources: [
+                .copy("src/app/resources/image")
+            ]
         ),
     ]
 )

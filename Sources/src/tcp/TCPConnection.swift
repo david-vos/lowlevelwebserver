@@ -17,11 +17,7 @@ class TCPConnection {
         self.maximumRequestSizeBytes = maximumRequestSizeBytes
 
         var timeout = timeval()
-        #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
-            timeout.tv_sec = Int(receiveTimeoutSeconds) // Seconds (Int on Darwin)... Thx AI
-        #elseif os(Linux)
-            timeout.tv_sec = Int32(receiveTimeoutSeconds) // Seconds (Int32 on Linux)... Thx AI
-        #endif
+        timeout.tv_sec = receiveTimeoutSeconds
         timeout.tv_usec = 0
 
         let timeoutLength = socklen_t(MemoryLayout<timeval>.size)

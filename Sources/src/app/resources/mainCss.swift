@@ -152,6 +152,19 @@ class MainCss: Page {
             font-weight: 600;
             margin-bottom: 16px;
             color: #333;
+            transition: transform 0.2s ease, color 0.2s ease;
+            display: inline-block;
+        }
+
+        .title-link {
+            text-decoration: none;
+            color: inherit;
+            display: inline-block;
+        }
+
+        .title-link:hover h2 {
+            transform: scale(1.03);
+            color: #555;
         }
 
         .text-content p {
@@ -161,6 +174,12 @@ class MainCss: Page {
 
         .box-content {
             flex: 1;
+        }
+
+        .box-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
         }
 
         .box {
@@ -174,29 +193,58 @@ class MainCss: Page {
             justify-content: center;
             font-size: 18px;
             color: #666;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .box-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .box-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.15) 100%);
+            pointer-events: none;
+            transition: background 0.2s ease;
+        }
+
+        .box-link:hover .box {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .box-link:hover .box-overlay {
+            background: linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.3) 100%);
         }
 
         @media (max-width: 768px) {
             .container {
                 padding: 40px 16px;
             }
-            
+
             .header-box {
                 flex-direction: column;
                 text-align: center;
                 padding: 30px 20px;
                 gap: 24px;
             }
-            
+
             .profile-image {
                 width: 120px;
                 height: 120px;
             }
-            
+
             .header-content {
                 text-align: center;
             }
-            
+
             .header-subtitle {
                 margin-left: 0;
                 padding-left: 0;
@@ -204,29 +252,29 @@ class MainCss: Page {
                 border-top: 2px solid #e0e0e0;
                 padding-top: 16px;
             }
-            
+
             .social-icons {
                 justify-content: center;
             }
-            
+
             .item {
                 flex-direction: column !important;
                 gap: 24px;
                 margin-bottom: 60px;
             }
-            
+
             .text-content {
                 order: 1;
                 flex: none;
                 width: 100%;
             }
-            
+
             .box-content {
                 order: 2;
                 flex: none;
                 width: 100%;
             }
-            
+
             .box {
                 max-width: 100%;
                 width: 100%;

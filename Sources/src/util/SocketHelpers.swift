@@ -24,7 +24,7 @@ enum SocketHelpers {
         #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
             return Darwin.socket(AF_INET, SOCK_STREAM, 0)
         #elseif os(Linux)
-            return Glibc.socket(AF_INET, SOCK_STREAM, 0)
+            return Glibc.socket(AF_INET, Int32(SOCK_STREAM.rawValue), 0)
         #endif
     }
 

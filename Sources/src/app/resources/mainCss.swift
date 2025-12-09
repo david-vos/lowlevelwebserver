@@ -14,24 +14,22 @@ class MainCss: Page {
 
     func render(request _: HTTPRequest?) -> Data {
         let css = """
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .container.home {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-top: 0;
+            padding-bottom: 0;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-            min-height: 100vh;
+        .container.home .header-box {
+            margin-bottom: 20px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 20px;
+        .container.home .main-nav {
+            margin-top: 0;
+            margin-bottom: 0;
         }
 
         .header-box {
@@ -132,103 +130,33 @@ class MainCss: Page {
             opacity: 0.9;
         }
 
-        .item {
+        .main-nav {
             display: flex;
-            align-items: center;
-            gap: 40px;
+            justify-content: center;
+            gap: 24px;
+            margin-top: -60px;
             margin-bottom: 80px;
         }
 
-        .item.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .text-content {
-            flex: 1;
-        }
-
-        .text-content h2 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: #333;
-            transition: transform 0.2s ease, color 0.2s ease;
+        .nav-link {
             display: inline-block;
-        }
-
-        .title-link {
-            text-decoration: none;
-            color: inherit;
-            display: inline-block;
-        }
-
-        .title-link:hover h2 {
-            transform: scale(1.03);
-            color: #555;
-        }
-
-        .text-content p {
-            font-size: 16px;
-            color: #666;
-        }
-
-        .box-content {
-            flex: 1;
-        }
-
-        .box-link {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .box {
-            width: 100%;
-            aspect-ratio: 1;
+            padding: 12px 32px;
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: #666;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 16px;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            overflow: hidden;
-            position: relative;
         }
 
-        .box-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .box-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.15) 100%);
-            pointer-events: none;
-            transition: background 0.2s ease;
-        }
-
-        .box-link:hover .box {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        }
-
-        .box-link:hover .box-overlay {
-            background: linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.3) 100%);
+        .nav-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 40px 16px;
-            }
-
             .header-box {
                 flex-direction: column;
                 text-align: center;
@@ -255,29 +183,6 @@ class MainCss: Page {
 
             .social-icons {
                 justify-content: center;
-            }
-
-            .item {
-                flex-direction: column !important;
-                gap: 24px;
-                margin-bottom: 60px;
-            }
-
-            .text-content {
-                order: 1;
-                flex: none;
-                width: 100%;
-            }
-
-            .box-content {
-                order: 2;
-                flex: none;
-                width: 100%;
-            }
-
-            .box {
-                max-width: 100%;
-                width: 100%;
             }
         }
         """

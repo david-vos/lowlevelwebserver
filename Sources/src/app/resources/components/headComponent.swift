@@ -8,7 +8,7 @@ class HeadComponent {
         let author: String
         let canonicalUrl: String
         let faviconPath: String
-        let stylesheetPath: String
+        let stylesheetPaths: [String]
         let lang: String
 
         static let `default` = HeadConfig(
@@ -18,12 +18,16 @@ class HeadComponent {
             author: "David Vos",
             canonicalUrl: "https://dvos.me",
             faviconPath: "/favicon.ico",
-            stylesheetPath: "/main.css",
+            stylesheetPaths: ["/common.css", "/main.css"],
             lang: "en"
         )
     }
 
     static func render(config: HeadConfig = .default) -> String {
+        let stylesheetLinks = config.stylesheetPaths.map { path in
+            "<link rel=\"stylesheet\" href=\"\(path)\">"
+        }.joined(separator: "\n        ")
+
         return """
         <head>
             <meta charset="UTF-8">
@@ -34,7 +38,7 @@ class HeadComponent {
             <meta name="author" content="\(config.author)">
             <link rel="canonical" href="\(config.canonicalUrl)">
             <link rel="icon" type="image/x-icon" href="\(config.faviconPath)">
-            <link rel="stylesheet" href="\(config.stylesheetPath)">
+            \(stylesheetLinks)
         </head>
         """
     }

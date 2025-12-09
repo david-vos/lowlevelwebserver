@@ -21,10 +21,8 @@ class MainPage: Page {
         <html lang="en">
         \(headHTML)
         <body>
-            <div class="container">
+            <div class="container home">
                 \(headerHTML)
-
-                \(BoxComponent.renderAll())
             </div>
         </body>
         </html>

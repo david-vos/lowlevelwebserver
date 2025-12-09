@@ -2,10 +2,10 @@ import Foundation
 
 class HeaderComponent {
     static let quotes: [String] = [
-        "Living in constant fear of a windows 11 update.<br>Each morning I wake up wondering if the Microsft overlords <br>will play with my sould and kill any unsaved document I have open.",
-        "Writing slow code thats breaks any and all neovim setups since 2005",
-        "Spending 3 months learning a new langague just so I dont have to work with MatLab",
-        "If I have to write 1 more line of Groovy code, I will personally fly to your house and delete your project",
+        "Living in constant fear of a Windows 11 update.<br>Each morning I wake up wondering if the Microsoft overlords<br>will play with my soul and kill any unsaved document I have open.",
+        "Writing slow code that breaks any and all Neovim setups since 2005.",
+        "I would rather spend 4 years learning how to be a car mechanic then be forced to work with MATLAB.",
+        "If I have to write 1 more line of Groovy code, I will personally fly to your house and delete your project.",
     ]
 
     struct SocialLink {
@@ -76,6 +76,10 @@ class HeaderComponent {
                         <img src="https://github.com/david-vos.png" alt="David Vos" class="profile-image">
                     </div>
                 </header>
+                <nav class="main-nav">
+                    <a href="/projects" class="nav-link">Projects</a>
+                    <a href="/blog" class="nav-link">Blogs</a>
+                </nav>
         """
     }
 }

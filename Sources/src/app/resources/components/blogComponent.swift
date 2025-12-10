@@ -30,7 +30,7 @@ class BlogComponent {
 
             <h3>Why Build from <span class="tilt">Scratch</span>?</h3>
             <p>There are already great web frameworks in Swift like <a href="https://vapor.codes/" target="_blank" class="fancy-link">Vapor</a>. So why not use those?
-            Well, first of all, I wanted to learn how web servers <em>actually</em> work at a fundimental level. I also think I may have gone slightly insane from writing too much Java/Groovy at work—which is <em>truly</em> a soul-sucking experience</p>
+            Well, first of all, I wanted to learn how web servers <em>actually</em> work at a fundimental level. I also think I may have gone slightly insane from writing too much Java/Groovy at work-which is <em>truly</em> a soul-sucking experience</p>
 
             <h3>Basics <span class="text-shadow">TCP Sockets</span></h3>
             <p>The foundation of any web server is the ability to accept network connections. However I did not find it that interesting to create my own TCP stack from scratch. So I might do that in the future, but not today.
@@ -40,13 +40,13 @@ class BlogComponent {
 
             <h3>Implementing HTTP/1.1</h3>
             <p>Once we can accept TCP connections, the next step is parsing HTTP requests. HTTP/1.1 is a text-based protocol, making it relatively straightforward to parse. We need to handle the request line, headers, and optionally a body.
-            All we have to do is follow <a href="https://www.rfc-editor.org/rfc/rfc9110.html#name-example-message-exchange" target="_blank" class="fancy-link">the spec</a> and that's it—<em>super easy!</em></p>
+            All we have to do is follow <a href="https://www.rfc-editor.org/rfc/rfc9110.html#name-example-message-exchange" target="_blank" class="fancy-link">the spec</a> and that's it-<em>super easy!</em></p>
             <p>A router maps URL paths to handlers. In this implementation, I created a simple and <span class="tilt">"stupid"</span> routing system that supports both static pages and dynamic content.
             All you need to do is register a URL path string and pass a render function that returns the HTML content as a string. This does, however, mean you can't do any of the <span class="strikethrough">fancy</span> stuff like <code>/fake/fake/../../blogs</code>
             But hey, You can't get everything in life.</p>
 
             <h3>What this 3 day SideQuest has offered me</h3>
-            <p>Building a web server from scratch has been a nice change of pace. It's given me a deeper understanding of some of the complexities behind what I consider the "standard" of web development—enough so that I didn't want to bother implementing <span class="strikethrough">HTTP/2</span> or <span class="strikethrough">HTTP/3</span> <span class="tilt">(｡- .•)</span></p>
+            <p>Building a web server from scratch has been a nice change of pace. It's given me a deeper understanding of some of the complexities behind what I consider the "standard" of web development-enough so that I didn't want to bother implementing <span class="strikethrough">HTTP/2</span> or <span class="strikethrough">HTTP/3</span> <span class="tilt">(｡- .•)</span></p>
             """,
             date: "December 9, 2025",
             author: "David Vos",

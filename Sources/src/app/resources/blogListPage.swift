@@ -13,7 +13,7 @@ class BlogListPage: Page {
         }
     )
 
-    func render(request _: HTTPRequest?) -> Data {
+    func render(request: HTTPRequest?) -> Data {
         let headConfig = HeadComponent.HeadConfig(
             title: "Blogs - David Vos",
             description: "Blog posts about software development, game development, and technology by David Vos.",
@@ -21,16 +21,18 @@ class BlogListPage: Page {
             author: "David Vos",
             canonicalUrl: "https://dvos.me/blog",
             faviconPath: "/favicon.ico",
-            stylesheetPaths: ["/common.css", "/blog.css"],
+            stylesheetPaths: ["/colours.css", "/common.css", "/blog.css"],
             lang: "en"
         )
         let headHTML = HeadComponent.render(config: headConfig)
+        let themeToggle = ThemeToggleComponent.render(request: request)
 
         let body = """
         <!DOCTYPE html>
         <html lang="en">
         \(headHTML)
         <body>
+            \(themeToggle)
             <div class="container">
                 <header class="page-header">
                     <a href="/" class="back-link">← Back to Home</a>

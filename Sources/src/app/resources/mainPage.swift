@@ -13,14 +13,16 @@ class MainPage: Page {
         }
     )
 
-    func render(request _: HTTPRequest?) -> Data {
+    func render(request: HTTPRequest?) -> Data {
         let headerHTML = HeaderComponent.render()
         let headHTML = HeadComponent.render()
+        let themeToggle = ThemeToggleComponent.render(request: request)
         let body = """
         <!DOCTYPE html>
         <html lang="en">
         \(headHTML)
         <body>
+            \(themeToggle)
             <div class="container home">
                 \(headerHTML)
             </div>

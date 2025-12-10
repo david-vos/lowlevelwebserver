@@ -13,7 +13,7 @@ class ProjectsPage: Page {
         }
     )
 
-    func render(request _: HTTPRequest?) -> Data {
+    func render(request: HTTPRequest?) -> Data {
         let headConfig = HeadComponent.HeadConfig(
             title: "Projects - David Vos",
             description: "Projects and open source work by David Vos. Unity tools, web development, and more.",
@@ -21,16 +21,18 @@ class ProjectsPage: Page {
             author: "David Vos",
             canonicalUrl: "https://dvos.me/projects",
             faviconPath: "/favicon.ico",
-            stylesheetPaths: ["/common.css", "/projects.css"],
+            stylesheetPaths: ["/colours.css", "/common.css", "/projects.css"],
             lang: "en"
         )
         let headHTML = HeadComponent.render(config: headConfig)
+        let themeToggle = ThemeToggleComponent.render(request: request)
 
         let body = """
         <!DOCTYPE html>
         <html lang="en">
         \(headHTML)
         <body>
+            \(themeToggle)
             <div class="container">
                 <header class="page-header">
                     <a href="/" class="back-link">← Back to Home</a>

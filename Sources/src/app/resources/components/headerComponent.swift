@@ -10,39 +10,41 @@ class HeaderComponent {
 
     struct SocialLink {
         let url: String
-        let iconUrl: String
+        let iconName: String
         let altText: String
         let ariaLabel: String
     }
 
+    static let iconColor = "%23333333"
+
     static let socialLinks: [SocialLink] = [
         SocialLink(
             url: "https://github.com/david-vos",
-            iconUrl: "https://api.iconify.design/brandico:github.svg?color=%23333333",
+            iconName: "brandico:github",
             altText: "GitHub",
             ariaLabel: "Visit my GitHub profile"
         ),
         SocialLink(
             url: "https://www.linkedin.com/in/david-vos-software-developer",
-            iconUrl: "https://api.iconify.design/brandico:linkedin.svg?color=%23333333",
+            iconName: "brandico:linkedin",
             altText: "LinkedIn",
             ariaLabel: "Visit my LinkedIn profile"
         ),
         SocialLink(
             url: "https://www.instagram.com/localvos/",
-            iconUrl: "https://api.iconify.design/brandico:instagram.svg?color=%23333333",
+            iconName: "brandico:instagram",
             altText: "Instagram",
             ariaLabel: "Visit my Instagram profile"
         ),
         SocialLink(
             url: "https://bsky.app/profile/dvos.me",
-            iconUrl: "https://api.iconify.design/simple-icons:bluesky.svg?color=%23333333",
+            iconName: "simple-icons:bluesky",
             altText: "BlueSky",
             ariaLabel: "Visit my BlueSky profile"
         ),
         SocialLink(
             url: "mailto:contact@dvos.me",
-            iconUrl: "https://api.iconify.design/mdi:email-outline.svg?color=%23333333",
+            iconName: "mdi:email-outline",
             altText: "Email",
             ariaLabel: "Send me an email"
         ),
@@ -53,9 +55,10 @@ class HeaderComponent {
         let formattedQuote = "\"\(selectedQuote)\"<br>- \(name)"
 
         let socialIconsHTML = socialLinks.map { link in
-            """
+            let iconUrl = "https://api.iconify.design/\(link.iconName).svg?color=\(iconColor)"
+            return """
             <a href="\(link.url)" target="_blank" rel="noreferrer noopener" class="social-icon" aria-label="\(link.ariaLabel)">
-                <img src="\(link.iconUrl)" alt="\(link.altText)" width="20" height="20">
+                <img src="\(iconUrl)" alt="\(link.altText)" width="20" height="20">
             </a>
             """
         }.joined(separator: "\n                        ")

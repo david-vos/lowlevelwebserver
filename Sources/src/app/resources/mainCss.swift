@@ -33,10 +33,10 @@ class MainCss: Page {
         }
 
         .header-box {
-            background: white;
+            background: var(--bg-card);
             padding: 40px 40px 40px 30px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px var(--shadow-light);
             margin-bottom: 80px;
             display: flex;
             align-items: center;
@@ -66,7 +66,7 @@ class MainCss: Page {
             font-size: 32px;
             font-weight: 600;
             margin-bottom: 12px;
-            color: #333;
+            color: var(--text-primary);
         }
 
         .header-name {
@@ -78,20 +78,20 @@ class MainCss: Page {
         .header-role {
             font-size: 22px;
             font-weight: 400;
-            color: #777;
+            color: var(--text-tertiary);
             display: block;
             margin-top: 0;
         }
 
         .header-subtitle {
             font-size: 16px;
-            color: #666;
+            color: var(--text-secondary);
             margin-bottom: 24px;
             margin-left: 24px;
             padding-left: 16px;
             line-height: 1.6;
             font-style: italic;
-            border-left: 2px solid #e0e0e0;
+            border-left: 2px solid var(--border-medium);
         }
 
         .social-icons {
@@ -108,22 +108,24 @@ class MainCss: Page {
             justify-content: center;
             width: 40px;
             height: 40px;
-            border: 1.5px solid #d0d0d0;
+            border: 1.5px solid var(--border-dark);
             border-radius: 4px;
-            background-color: #fafafa;
+            background-color: var(--bg-social-icon);
         }
 
         .social-icon img {
             display: block;
             width: 20px;
             height: 20px;
-            opacity: 0.6;
+            opacity: 0.7;
+            filter: var(--icon-filter);
+            transition: opacity 0.2s, filter 0.2s;
         }
 
         .social-icon:hover {
             transform: scale(1.05);
-            background-color: #f0f0f0;
-            border-color: #b0b0b0;
+            background-color: var(--bg-card-hover);
+            border-color: var(--border-darker);
         }
 
         .social-icon:hover img {
@@ -141,11 +143,11 @@ class MainCss: Page {
         .nav-link {
             display: inline-block;
             padding: 12px 32px;
-            background: white;
+            background: var(--bg-card);
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px var(--shadow-light);
             text-decoration: none;
-            color: #333;
+            color: var(--text-primary);
             font-weight: 500;
             font-size: 16px;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -153,7 +155,7 @@ class MainCss: Page {
 
         .nav-link:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px var(--shadow-medium);
         }
 
         @media (max-width: 768px) {
@@ -177,7 +179,7 @@ class MainCss: Page {
                 margin-left: 0;
                 padding-left: 0;
                 border-left: none;
-                border-top: 2px solid #e0e0e0;
+                border-top: 2px solid var(--border-medium);
                 padding-top: 16px;
             }
 

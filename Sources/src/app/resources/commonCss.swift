@@ -48,8 +48,8 @@ class CommonCss: Page {
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #f5f5f5;
-            color: #333;
+            background: var(--bg-page);
+            color: var(--text-primary);
             line-height: 1.6;
             min-height: 100vh;
         }
@@ -63,7 +63,7 @@ class CommonCss: Page {
         /* Shared back link style */
         .back-link {
             display: inline-block;
-            color: #666;
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
             margin-bottom: 24px;
@@ -71,7 +71,7 @@ class CommonCss: Page {
         }
 
         .back-link:hover {
-            color: #333;
+            color: var(--text-primary);
         }
 
         /* Shared page header style */
@@ -83,13 +83,13 @@ class CommonCss: Page {
         .page-title {
             font-size: 48px;
             font-weight: 700;
-            color: #333;
+            color: var(--text-primary);
             margin-bottom: 12px;
         }
 
         .page-subtitle {
             font-size: 18px;
-            color: #666;
+            color: var(--text-secondary);
         }
 
         @media (max-width: 768px) {

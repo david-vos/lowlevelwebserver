@@ -19,7 +19,7 @@ class BlogPostPage: Page {
         title = blogPost.title
     }
 
-    func render(request _: HTTPRequest?) -> Data {
+    func render(request: HTTPRequest?) -> Data {
         let headConfig = HeadComponent.HeadConfig(
             title: "\(blogPost.title) - David Vos",
             description: blogPost.summary,
@@ -27,16 +27,18 @@ class BlogPostPage: Page {
             author: blogPost.author,
             canonicalUrl: "https://dvos.me\(blogPost.path)",
             faviconPath: "/favicon.ico",
-            stylesheetPaths: ["/common.css", "/blog.css"],
+            stylesheetPaths: ["/colours.css", "/common.css", "/blog.css"],
             lang: "en"
         )
         let headHTML = HeadComponent.render(config: headConfig)
+        let themeToggle = ThemeToggleComponent.render(request: request)
 
         let body = """
         <!DOCTYPE html>
         <html lang="en">
         \(headHTML)
         <body>
+            \(themeToggle)
             <div class="container blog-container">
                 \(BlogComponent.renderFull(post: blogPost))
             </div>

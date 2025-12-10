@@ -37,7 +37,7 @@ class ProjectsCss: Page {
             font-size: 24px;
             font-weight: 600;
             margin-bottom: 16px;
-            color: #333;
+            color: var(--text-primary);
             transition: transform 0.2s ease, color 0.2s ease;
             display: inline-block;
         }
@@ -50,12 +50,12 @@ class ProjectsCss: Page {
 
         .title-link:hover h2 {
             transform: scale(1.03);
-            color: #555;
+            color: var(--text-hover);
         }
 
         .text-content p {
             font-size: 16px;
-            color: #666;
+            color: var(--text-secondary);
         }
 
         .box-content {
@@ -71,14 +71,14 @@ class ProjectsCss: Page {
         .box {
             width: 100%;
             aspect-ratio: 1;
-            background: white;
+            background: var(--bg-card);
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px var(--shadow-light);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 18px;
-            color: #666;
+            color: var(--text-secondary);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             overflow: hidden;
             position: relative;
@@ -96,18 +96,18 @@ class ProjectsCss: Page {
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.15) 100%);
+            background: linear-gradient(135deg, transparent 0%, var(--shadow-overlay) 100%);
             pointer-events: none;
             transition: background 0.2s ease;
         }
 
         .box-link:hover .box {
             transform: translateY(-4px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 20px var(--shadow-medium);
         }
 
         .box-link:hover .box-overlay {
-            background: linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.3) 100%);
+            background: linear-gradient(135deg, transparent 0%, var(--shadow-overlay-hover) 100%);
         }
 
         @media (max-width: 768px) {

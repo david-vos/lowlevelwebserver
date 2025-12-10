@@ -26,6 +26,7 @@ struct HTTPRequest {
     let method: HTTPMethod
     let url: String
     let version: String
+    let cookies: [String: String]
 }
 
 /// Parses the HTTP request from raw TCP data
@@ -66,6 +67,26 @@ class HTTPParser {
         guard url.hasPrefix("/") else { return nil }
         guard version.hasPrefix("HTTP/") else { return nil }
 
-        return HTTPRequest(method: method, url: url, version: version)
+        let cookies = parseCookies(from: lines)
+
+        return HTTPRequest(method: method, url: url, version: version, cookies: cookies)
+    }
+
+    private static func parseCookies(from lines: [String]) -> [String: String] {
+        guard let cookieLine = lines.first(where: { $0.hasPrefix("Cookie: ") }) else {
+            return [:]
+        }
+
+        let cookieValue = String(cookieLine.dropFirst("Cookie: ".count))
+        var cookies: [String: String] = [:]
+
+        for pair in cookieValue.components(separatedBy: "; ") {
+            let parts = pair.split(separator: "=", maxSplits: 1)
+            if parts.count == 2 {
+                cookies[String(parts[0])] = String(parts[1])
+            }
+        }
+
+        return cookies
     }
 }

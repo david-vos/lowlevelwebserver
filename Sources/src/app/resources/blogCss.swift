@@ -22,16 +22,16 @@ class BlogCss: Page {
 
         /* Blog Card */
         .blog-card {
-            background: white;
+            background: var(--bg-card);
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px var(--shadow-light);
             overflow: hidden;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .blog-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 20px var(--shadow-medium);
         }
 
         .blog-card-link {
@@ -48,7 +48,7 @@ class BlogCss: Page {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #f9f9f9;
+            background: var(--bg-card-secondary);
             padding: 24px;
         }
 
@@ -65,7 +65,7 @@ class BlogCss: Page {
 
         .blog-date {
             font-size: 13px;
-            color: #888;
+            color: var(--text-muted);
             display: block;
             margin-bottom: 8px;
         }
@@ -73,21 +73,21 @@ class BlogCss: Page {
         .blog-card-title {
             font-size: 20px;
             font-weight: 600;
-            color: #333;
+            color: var(--text-primary);
             margin-bottom: 8px;
             line-height: 1.3;
         }
 
         .blog-card-summary {
             font-size: 15px;
-            color: #666;
+            color: var(--text-secondary);
             line-height: 1.5;
             margin-bottom: 12px;
         }
 
         .blog-read-more {
             font-size: 14px;
-            color: #555;
+            color: var(--text-hover);
             font-weight: 500;
         }
 
@@ -97,35 +97,35 @@ class BlogCss: Page {
         }
 
         .blog-post {
-            background: white;
+            background: var(--bg-card);
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px var(--shadow-light);
             padding: 48px;
         }
 
         .blog-post-header {
             margin-bottom: 32px;
             padding-bottom: 24px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--border-light);
         }
 
         .blog-post-title {
             font-size: 36px;
             font-weight: 700;
-            color: #333;
+            color: var(--text-primary);
             line-height: 1.2;
             margin-bottom: 12px;
         }
 
         .blog-post-author {
             font-size: 15px;
-            color: #666;
+            color: var(--text-secondary);
         }
 
         .blog-post-content {
             font-size: 17px;
             line-height: 1.8;
-            color: #444;
+            color: var(--text-content);
         }
 
         .blog-post-content p {
@@ -135,7 +135,7 @@ class BlogCss: Page {
         .blog-post-content h3 {
             font-size: 22px;
             font-weight: 600;
-            color: #333;
+            color: var(--text-primary);
             margin-top: 32px;
             margin-bottom: 16px;
         }
@@ -150,29 +150,29 @@ class BlogCss: Page {
         }
 
         .blog-post-content code {
-            background: #f4f4f4;
+            background: var(--bg-code);
             padding: 2px 6px;
             border-radius: 4px;
             font-family: 'Courier New', monospace;
             font-size: 0.9em;
-            color: #e83e8c;
+            color: var(--text-code);
         }
 
         .blog-post-content a.fancy-link {
-            color: #0066cc;
+            color: var(--link-primary);
             text-decoration: none;
-            border-bottom: 2px solid #0066cc;
+            border-bottom: 2px solid var(--link-primary);
             transition: all 0.2s ease;
         }
 
         .blog-post-content a.fancy-link:hover {
-            color: #004499;
-            border-bottom-color: #004499;
-            background: rgba(0, 102, 204, 0.1);
+            color: var(--link-hover);
+            border-bottom-color: var(--link-hover);
+            background: var(--link-bg-hover);
         }
 
         .blog-post-content .text-shadow {
-            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.15);
+            text-shadow: 2px 2px 0px var(--shadow-text);
             font-weight: 600;
         }
 
@@ -190,7 +190,7 @@ class BlogCss: Page {
         .blog-post-footer {
             margin-top: 40px;
             padding-top: 24px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid var(--border-light);
         }
 
         @media (max-width: 768px) {

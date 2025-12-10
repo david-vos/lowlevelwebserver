@@ -3,6 +3,7 @@ import Foundation
 let router = Router()
 
 let mainPage = MainPage()
+let coloursCss = ColoursCss()
 let commonCss = CommonCss()
 let mainCss = MainCss()
 let blogCss = BlogCss()
@@ -11,6 +12,7 @@ let blogPages = BlogPages()
 let projectsPage = ProjectsPage()
 
 router.register(mainPage.route)
+router.register(coloursCss.route)
 router.register(commonCss.route)
 router.register(mainCss.route)
 router.register(blogCss.route)

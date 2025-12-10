@@ -18,7 +18,7 @@ class HeadComponent {
             author: "David Vos",
             canonicalUrl: "https://dvos.me",
             faviconPath: "/favicon.ico",
-            stylesheetPaths: ["/common.css", "/main.css"],
+            stylesheetPaths: ["/colours.css", "/common.css", "/main.css"],
             lang: "en"
         )
     }

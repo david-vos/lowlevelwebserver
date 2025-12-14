@@ -4,7 +4,7 @@ class HealthCheck: Page {
     let title: String = "David Vos - HealthCheck"
 
     lazy var route: Route = .init(
-        path: "/health",
+        path: "/healthcheck",
         handler: { [weak self] request in
             guard let self = self else {
                 return ErrorPage.staticErrorResponse

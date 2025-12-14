@@ -10,6 +10,7 @@ let blogCss = BlogCss()
 let projectsCss = ProjectsCss()
 let blogPages = BlogPages()
 let projectsPage = ProjectsPage()
+let healthCheck = HealthCheck()
 
 router.register(mainPage.route)
 router.register(coloursCss.route)
@@ -18,6 +19,7 @@ router.register(mainCss.route)
 router.register(blogCss.route)
 router.register(projectsCss.route)
 router.register(projectsPage.route)
+router.register(healthCheck.route)
 blogPages.registerRoutes(router: router)
 router.registerResource(
     path: "/favicon.ico",

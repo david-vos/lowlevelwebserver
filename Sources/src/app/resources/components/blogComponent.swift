@@ -47,6 +47,7 @@ class BlogComponent {
 
             <h3>What this 3 day SideQuest has offered me</h3>
             <p>Building a web server from scratch has been a nice change of pace. It's given me a deeper understanding of some of the complexities behind what I consider the "standard" of web development-enough so that I didn't want to bother implementing <span class="strikethrough">HTTP/2</span> or <span class="strikethrough">HTTP/3</span> <span class="tilt">(｡- .•)</span></p>
+            <p>But what if I get side-tracked and start working on creating my own rolling release and load balancer... Until next time!</p>
             """,
             date: "December 9, 2025",
             author: "David Vos",

@@ -26,6 +26,11 @@ router.registerResource(
     contentType: "image/x-icon",
     bundlePath: "image/favicon.ico"
 )
+router.registerResource(
+    path: "/cv",
+    contentType: "application/pdf",
+    bundlePath: "image/resume.pdf"
+)
 
 let server = WebServer(port: 9613, router: router)
 

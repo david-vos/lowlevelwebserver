@@ -31,6 +31,21 @@ router.registerResource(
     contentType: "application/pdf",
     bundlePath: "image/resume.pdf"
 )
+router.registerResource(
+    path: "/fonts/RobotoMono-Regular.ttf",
+    contentType: "font/ttf",
+    bundlePath: "fonts/RobotoMono-Regular.ttf"
+)
+router.registerResource(
+    path: "/fonts/RobotoMono-Bold.ttf",
+    contentType: "font/ttf",
+    bundlePath: "fonts/RobotoMono-Bold.ttf"
+)
+router.registerResource(
+    path: "/fonts/RobotoMono-Italic.ttf",
+    contentType: "font/ttf",
+    bundlePath: "fonts/RobotoMono-Italic.ttf"
+)
 
 let server = WebServer(port: 9613, router: router)
 

@@ -14,6 +14,30 @@ class CommonCss: Page {
 
     func render(request _: HTTPRequest?) -> Data {
         let css = """
+        @font-face {
+            font-family: 'Roboto Mono';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('/fonts/RobotoMono-Regular.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Roboto Mono';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url('/fonts/RobotoMono-Bold.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Roboto Mono';
+            font-style: italic;
+            font-weight: 400;
+            font-display: swap;
+            src: url('/fonts/RobotoMono-Italic.ttf') format('truetype');
+        }
+
         /* Enable View Transitions API for cross-document navigations */
         @view-transition {
             navigation: auto;
@@ -47,7 +71,7 @@ class CommonCss: Page {
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Roboto Mono', monospace;
             background: var(--bg-page);
             color: var(--text-primary);
             line-height: 1.6;

@@ -8,7 +8,8 @@ let package = Package(
             name: "lowlevelwebserver",
             path: "Sources",
             resources: [
-                .copy("src/app/resources/image")
+                .copy("src/app/resources/image"),
+                .copy("src/app/resources/fonts")
             ]
         ),
     ]

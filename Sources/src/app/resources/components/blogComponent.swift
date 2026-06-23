@@ -17,6 +17,48 @@ struct BlogPost {
 class BlogComponent {
     static let posts: [BlogPost] = [
         BlogPost(
+            slug: "building-swift-load-balancer",
+            title: "Building a Load Balancer (and Accidentally Kubernetes)",
+            summary: "I said 'what if I got side-tracked building a load balancer'... so I did. A mini container orchestrator in Swift with round-robin routing, health checks, and zero-downtime rolling releases.",
+            content: """
+            <p>So at the end of my last blog post, I teased: <em>"But what if I get side-tracked and start working on creating my own rolling release and load balancer..."</em></br>
+            Reader, I did. </span></p>
+
+            <h3>The Problem With <span class="text-shadow">One Container</span></h3>
+            <p>My website runs as a single Docker container. Every time I push a new version, it restarts-and for a couple of seconds, anyone visiting gets nothing. For a personal site that maybe three people visit, this is <span class="strikethrough">a complete non-issue</span>... but also a perfect excuse to massively over-engineer the deployment pipeline.</p>
+            <p>The dream: multiple containers behind a load balancer, replaced one at a time during updates. Zero downtime. Professional-grade infrastructure for a website that mostly just shows my CV. <span class="tilt">(｡•̀ᴗ-)✧</span></p>
+
+            <h3>Pods, But at <span class="text-shadow">Home</span></h3>
+            <p>If you've used Kubernetes, this will look very familiar. Each running instance of the web server is called a <code>Pod</code>-it has a UUID, a status (<code>pending</code>, <code>running</code>, <code>terminating</code>...), a host port, and a Docker container underneath. A <code>DeploymentConfig</code> says how many replicas to run, which Docker image to use, and which health check path to hit.</p>
+            <p>I did not set out to reinvent Kubernetes. But I am stupid enough to steal a good idea and make it much worse</p>
+
+            <h3>Round-Robin <span class="text-shadow">Routing</span></h3>
+            <p>The load balancer is a reverse proxy. Every incoming HTTP request asks the <code>LoadBalancer</code> for the next healthy pod-it keeps a counter, increments it on each request, and takes <code>index % podCount</code>. Classic round-robin.</p>
+            <p>The only interesting bit: requests come in concurrently, so the counter is protected with an <code>NSLock</code>. Without it, two threads could read the same index and route two requests to the same pod while skipping the next one. The kind of bug that looks fine in testing but it misbehaves under real load... Not that I have any</span></p>
+
+            <h3>Health Checks & <span class="text-shadow">Self-Healing</span></h3>
+            <p>Every 10 seconds, the <code>PodManager</code> sends an HTTP <code>GET</code> to each pod's health endpoint. A <code>2xx</code> means healthy. Anything else-timeout, connection refused, a <code>500</code>-counts as a failure. After three consecutive failures, the pod gets replaced.</p>
+            <p>But here's the important part: before the old pod dies, a replacement has to start <em>and pass its own health check</em>. If the new pod is also broken, it gets scrapped and the old one stays alive. This is what makes the system self-healing rather than just self-destructing.</span></p>
+
+            <h3>Rolling Releases: <span class="text-shadow">Zero Downtime</span></h3>
+            <p>Every two minutes, the load balancer calls the <a href="https://docs.github.com/en/rest/releases/releases" target="_blank" class="fancy-link">GitHub releases API</a> and checks if there's a newer release tag than the one currently running. If there is, a rolling update kicks off.</p>
+            <p>First, the Docker image gets rebuilt against the new release tag. Then, for each old pod-<em>one at a time</em>-a new pod starts from the fresh image, waits up to 60 seconds to pass a health check, and only <em>then</em> is the old pod stopped and removed. If the new pod never becomes healthy, it gets scrapped and the old one keeps running.</p>
+            <p>During the whole process, traffic keeps flowing to whatever pods are healthy. Some requests hit old pods, some hit new ones-but all of them hit <em>something that works</em>.</span></p>
+
+            <h3>I <span class="strikethrough">Slightly</span> Cheated</h3>
+            <p>In the web server post I built everything from raw TCP sockets with no frameworks. This time I used <a href="https://vapor.codes/" target="_blank" class="fancy-link">Vapor</a> for the HTTP layer. Reason: I needed an HTTP <em>client</em> to proxy requests and ping health check endpoints, and implementing one of those from scratch is a whole other project. And I'm lazy sometimes</span></p>
+            <p>Everything else is still custom: the pod lifecycle, the round-robin router, the rolling update algorithm, the Docker CLI wrapper. I just didn't want to hand-roll HTTP client connection pooling on top of everything else. Some battles aren't worth fighting.</p>
+
+            <h3>What Building Mini-Kubernetes <span class="text-shadow">Taught Me</span></h3>
+            <p>The happy path was easy to get working in an afternoon. Then I spent the next day finding all the ways it falls apart: what if the Docker build takes longer than expected? What if two health cycles overlap during a rolling update? What if the host runs out of ephemeral ports? Each question revealed another edge case that Kubernetes has already solved-usually with a lot more sophistication than my version. <span class="strikethrough">Production-ready.</span></p>
+            <p>It also made me properly appreciate the humble <code>/healthcheck</code> endpoint. That one route-returning <code>Status: OK</code>-is what the entire system uses to decide which pods are safe to route to and which should be replaced. Small thing, surprisingly big job.</p>
+            <p>And with that, my personal website now deploys with zero downtime, uses round-robin load balancing across multiple pods, and automatically picks up new GitHub releases. For a site that three people visit. <em>Worth it.</em> <span class="tilt">(•ᴗ•)</span></p>
+            """,
+            date: "December 15, 2025",
+            author: "David Vos",
+            imageUrl: "https://api.iconify.design/logos:docker-icon.svg"
+        ),
+        BlogPost(
             slug: "building-swift-web-server",
             title: "Building a Web Server from Scratch in Swift",
             summary: "How I created a HTTP server using Swift, Using TCP sockets to serve the web page you are viewing right now.",

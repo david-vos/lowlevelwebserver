@@ -20,31 +20,31 @@ class HeaderComponent {
     static let socialLinks: [SocialLink] = [
         SocialLink(
             url: "https://github.com/david-vos",
-            iconName: "brandico:github",
+            iconName: "brandico/github",
             altText: "GitHub",
             ariaLabel: "Visit my GitHub profile"
         ),
         SocialLink(
             url: "https://www.linkedin.com/in/david-vos-software-developer",
-            iconName: "brandico:linkedin",
+            iconName: "brandico/linkedin",
             altText: "LinkedIn",
             ariaLabel: "Visit my LinkedIn profile"
         ),
         SocialLink(
             url: "https://www.instagram.com/localvos/",
-            iconName: "brandico:instagram",
+            iconName: "brandico/instagram",
             altText: "Instagram",
             ariaLabel: "Visit my Instagram profile"
         ),
         SocialLink(
             url: "https://bsky.app/profile/dvos.me",
-            iconName: "simple-icons:bluesky",
+            iconName: "simple-icons/bluesky",
             altText: "BlueSky",
             ariaLabel: "Visit my BlueSky profile"
         ),
         SocialLink(
             url: "mailto:contact@dvos.me",
-            iconName: "mdi:email-outline",
+            iconName: "mdi/email-outline",
             altText: "Email",
             ariaLabel: "Send me an email"
         ),

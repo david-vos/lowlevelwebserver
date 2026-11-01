@@ -17,7 +17,7 @@ class ProjectsPage: Page {
         let headConfig = HeadComponent.HeadConfig(
             title: "Projects - David Vos",
             description: "Projects and open source work by David Vos. Unity tools, web development, and more.",
-            keywords: "David Vos Projects, Software Development, Unity Tools, Event Bus, Logger, Swift Web Server",
+            keywords: "David Vos Projects, Software Development, Situatiekaart, P2000, Unity Tools, Event Bus, Logger, Swift Web Server",
             author: "David Vos",
             canonicalUrl: "https://dvos.me/projects",
             faviconPath: "/favicon.ico",

@@ -262,7 +262,7 @@ class BlogComponent {
             """,
             date: "December 15, 2025",
             author: "David Vos",
-            imageUrl: "https://api.iconify.design/logos:docker-icon.svg"
+            imageUrl: "https://api.iconify.design/logos/docker-icon.svg"
         ),
         BlogPost(
             slug: "building-swift-web-server",
@@ -299,7 +299,7 @@ class BlogComponent {
             """,
             date: "December 9, 2025",
             author: "David Vos",
-            imageUrl: "https://api.iconify.design/logos:swift.svg"
+            imageUrl: "https://api.iconify.design/logos/swift.svg"
         )
     ]
 

@@ -10,6 +10,13 @@ class BoxComponent {
 
     static let boxes: [BoxItem] = [
         BoxItem(
+            title: "Situatiekaart.nl",
+            text: "A live map of the Netherlands with P2000 alerts, traffic jams and incidents from NDW, and train disruptions. </br>" +
+                "It tries to figure out which incident caused which slowdown. Even if it's a bridge opening on the other side of the city.",
+            imageUrl: "https://situatiekaart.nl/icon-512.png",
+            link: "https://situatiekaart.nl/"
+        ),
+        BoxItem(
             title: "DVos-Tools - Unity Event Bus",
             text: "In the hope of ever completing my first game, I needed an event bus for Unity to decouple my game systems. </br> " +
                 "It supports routing of events to specific instantiated classes, together with a type of 'lazy loading' for easy development.</br> ",
